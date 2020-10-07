@@ -27,6 +27,15 @@ function searchWeather(name) {
         $("#wind-speed").append("Wind Speed: " + windSpeed + " MPH");
 
     });
+
+    var queryURLForecast = "api.openweathermap.org/data/2.5/forecast?q="+userInput+"&appid=" + APIKey;
+
+    $.ajax({
+        url: queryURLForecast,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+    })
 }
 
 $("#select-city").on("click", function(event) { // creating the on click event to take in the user input city value
