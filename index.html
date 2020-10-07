@@ -9,19 +9,24 @@
     
 </head>
 <body>
-    <div class="top-bar">
-        <div>
+    <div class="container"></div> 
+        <div class="container-fluid" id="top-bar">
             <h1 class="toptitle">Weather Dashboard</h1>
         </div>
-      </div>
     <!-- Location Input Form -->
-    <form id="location-form">
-        <label for="city-input">Enter Your City Here</label>
-        <input type="text" id="city-input"><br>
-        <input id="select-city" type="submit" value="GO!">
-    </form>
+        <div class="col-4" id="left-aside">
+            <form id="location-form">
+                <label for="city-input">Search for a City:</label></br>
+                <input type="text" id="city-input"><br>
+                <input id="select-city" type="submit" value="GO!">
+            </form>
+        </div>
+        <div class="col-8" id="main-section">
+            Weather Populates Here
+        </div>
     <!-- Location Input Return Section -->
-  <div id="cityinfo-div"></div>
+        <div id="cityinfo-div"></div>
+    </div>
     
 </body>
 
