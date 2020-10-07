@@ -61,12 +61,17 @@
             var cityName = $("<div>").text(response.name); // creating the variable for city name
             var tempK = response.main.temp;
             var tempC = (tempK - 273.15)*1.80+32;
-            // var tempC = $("<div>").text(response.main.temp); // creating the name for the main weather data value
+            var humidity = response.main.humidity;
+            console.log(humidity);
+            var windSpeed = response.wind.speed;
+
 
 
             $("#city-name").empty(); // emptying div
             $("#city-name").append(cityName); // appending the under inputted city name, and the corresponding main weather data value
             $("#temp").append(tempC.toFixed(2));
+            $("#humidity").append(humidity);
+            $("#wind-speed").append(windSpeed);
 
         });
     }
