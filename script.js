@@ -15,7 +15,6 @@ function searchWeather(name) {
         var tempK = response.main.temp;
         var tempC = (tempK - 273.15)*1.80+32;
         var humidity = response.main.humidity;
-        console.log(humidity);
         var windSpeed = response.wind.speed;
 
 
@@ -28,7 +27,7 @@ function searchWeather(name) {
 
     });
 
-    var queryURLForecast = "api.openweathermap.org/data/2.5/forecast?q="+userInput+"&appid=" + APIKey;
+    var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q="+userInput+"&appid=" + APIKey;
 
     $.ajax({
         url: queryURLForecast,
