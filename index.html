@@ -17,14 +17,15 @@
     <!-- Location Input Form -->
             <div class="col-4" id="left-aside">
                 <form id="location-form">
-                    <label for="city-input">Search for a City:</label></br>
+                    <label for="city-input" id="label-text">Search for a City:</label></br>
                     <input type="text" id="city-input"><br>
-                    <input id="select-city" type="submit" value="GO!">
+                    <input class="btn btn-primary btn-lg" role="button" id="select-city" type="submit" value="GO!">
                 </form>
             </div>
             <div class="col-8" id="main-section">
                 <row id="main-weather-info">
-                    <div id="cityinfo-div">
+                    <div class="jumbotron">
+                        <h2 class="display-4" id="city-name"></h2>
                         <div id="city-name"></div>
                         <div id="temp"></div>
                         <div id="humidity"></div>
@@ -33,7 +34,13 @@
                     </div>
                 </row>
                 <row id="5-day-forecase">
-                    <div>5 Day Forecast</div>
+                    <div class="jumbotron">
+                        <h2 class="display-4">5 Day Forecast</h2>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </row>
             </div>
     <!-- Location Input Return Section -->
@@ -69,9 +76,9 @@
 
             $("#city-name").empty(); // emptying div
             $("#city-name").append(cityName); // appending the under inputted city name, and the corresponding main weather data value
-            $("#temp").append("Temperature: " + tempC.toFixed(2) + " degrees");
-            $("#humidity").append("Humidity: " + humidity);
-            $("#wind-speed").append("Wind Speed: " + windSpeed);
+            $("#temp").append("Temperature: " + tempC.toFixed(2) + " °F");
+            $("#humidity").append("Humidity: " + humidity + " %");
+            $("#wind-speed").append("Wind Speed: " + windSpeed + " MPH");
 
         });
     }
