@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Weather App</title>
+    
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Restaurant Roulette</li>
+          </ul>
+        </div>
+      </div>
+    <!-- Location Input Form -->
+    <form id="location-form">
+        <label for="city-input">Enter Your City Here</label>
+        <input type="text" id="city-input"><br>
+        <input id="select-city" type="submit" value="GO!">
+    </form>
+    <!-- Location Input Return Section -->
+  <div id="cityinfo-div"></div>
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function searchWeather(name) {
+    
+        var APIKey = "e79e860f1526eb9cc2572046fff7a30c"; // currently Alex's API key
+        var userInput = $("#city-input").val();
+        // building URL we need to access API
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ userInput+"&appid=" + APIKey;
+
+        $.ajax({ // Ajax function to access query
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+
+            var cityName = $("<h1>").text(response.name); // creating the variable for city name
+            var mainWeather = $("<h2>").text(response.weather[0].main); // creating the name for the main weather data value
+
+            $("#cityinfo-div").empty(); // emptying div
+            $("#cityinfo-div").append(cityName, mainWeather); // appending the under inputted city name, and the corresponding main weather data value
+
+        });
+    }
+
+    $("#select-city").on("click", function(event) { // creating the on click event to take in the user input city value
+        event.preventDefault();
+        var inputCity = $("#city-input").val().trim();
+
+        searchWeather(inputCity);
+    });
+
+</script>
+</html>
