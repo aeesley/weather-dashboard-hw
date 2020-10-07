@@ -24,7 +24,13 @@
             </div>
             <div class="col-8" id="main-section">
                 <row id="main-weather-info">
-                    <div id="cityinfo-div"></div>
+                    <div id="cityinfo-div">
+                        <div id="city-name"></div>
+                        <div id="temp"></div>
+                        <div id="humidity"></div>
+                        <div id="wind-speed"></div>
+                        <div id="uv-index"></div>
+                    </div>
                 </row>
                 <row id="5-day-forecase">
                     <div>5 Day Forecast</div>
@@ -50,12 +56,17 @@
             url: queryURL,
             method: "GET"
         }).then(function(response) {
+            console.log(response);
 
-            var cityName = $("<h1>").text(response.name); // creating the variable for city name
-            var mainWeather = $("<h2>").text(response.weather[0].main); // creating the name for the main weather data value
+            var cityName = $("<div>").text(response.name); // creating the variable for city name
+            var tempK = response.main.temp;
+            var tempC = (tempK - 273.15)*1.80+32;
+            // var tempC = $("<div>").text(response.main.temp); // creating the name for the main weather data value
 
-            $("#cityinfo-div").empty(); // emptying div
-            $("#cityinfo-div").append(cityName, mainWeather); // appending the under inputted city name, and the corresponding main weather data value
+
+            $("#city-name").empty(); // emptying div
+            $("#city-name").append(cityName); // appending the under inputted city name, and the corresponding main weather data value
+            $("#temp").append(tempC.toFixed(2));
 
         });
     }
