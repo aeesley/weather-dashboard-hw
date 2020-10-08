@@ -10,10 +10,13 @@ function searchWeather(name) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        // console.log(response);
+        console.log(response);
 
         // VARIABLES TO CALL & POPULATE CURRENT WEATHER
         var cityName = $("<div>").text(response.name); // creating the variable for city name
+        var weatherIcon = response.weather[0].icon;
+        var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+        iconEl = $("<img>").attr("src", iconURL);
         var tempK = response.main.temp;
         var tempC = (tempK - 273.15)*1.80+32;
         var humidity = response.main.humidity;
@@ -22,6 +25,8 @@ function searchWeather(name) {
         // ADDING CURRENT WEATHER DATA TO WEATHER DASHBOARD HTML
         $("#city-name").empty(); // emptying div
         $("#city-name").append(cityName); // appending the under inputted city name, and the corresponding main weather data value
+        $(cityName).addClass("city-name-style");
+        $(cityName).append(iconEl);
         $("#temp").append("Temperature: " + tempC.toFixed(2) + " °F");
         $("#humidity").append("Humidity: " + humidity + " %");
         $("#wind-speed").append("Wind Speed: " + windSpeed + " MPH");
