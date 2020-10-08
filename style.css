@@ -11,7 +11,7 @@ h2 {
 }
 
 #location-form {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .btn {
@@ -21,4 +21,27 @@ h2 {
 #label-text {
     font-size: large;
     font-weight: bold;
+}
+
+.jumbotron {
+    margin: 15px;
+}
+
+.forecast {
+    background-color:dodgerblue;
+    margin: 5px;
+    color: white;
+}
+
+.forecast-date {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forecast-temp {
+    font-size: 10px;
+}
+
+.forecast-hum {
+    font-size: 10px;
 }
