@@ -36,10 +36,10 @@ function searchWeather(name) {
     }).then(function(response) {
         console.log(response);
 
+        // FIRST VARIABLES AND DATA APPENDING FOR 1/5 DAY FORECAST
         var forecastDate = JSON.stringify(response.list[0].dt_txt);
         // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
         var forecastTempK = response.list[0].main.temp;
-        console.log(forecastTempK);
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         // var forecastTemp = response.list[0].main.temp;
         var forecastHum = response.list[0].main.humidity;
@@ -48,7 +48,49 @@ function searchWeather(name) {
         $("#forecasttemp1").append("Temp: " + forecastTempC.toFixed(2) + " °F");
         $("#forecasthum1").append("Humidity: " + forecastHum + "%");
 
+        // VARIABLES AND APPENDS FOR 2/5 DAY FORECAST
+        var forecastDate = JSON.stringify(response.list[1].dt_txt);
+        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var forecastTempK = response.list[1].main.temp;
+        var forecastTempC = (forecastTempK - 273.15)*1.80+32;
+        var forecastHum = response.list[1].main.humidity;
 
+        $("#forecast2").append(forecastDate);
+        $("#forecasttemp2").append("Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecasthum2").append("Humidity: " + forecastHum + "%");
+
+        // VARIABLES AND APPENDS FOR 3/5 DAY FORECAST
+        var forecastDate = JSON.stringify(response.list[2].dt_txt);
+        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var forecastTempK = response.list[2].main.temp;
+        var forecastTempC = (forecastTempK - 273.15)*1.80+32;
+        var forecastHum = response.list[2].main.humidity;
+
+        $("#forecast3").append(forecastDate);
+        $("#forecasttemp3").append("Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecasthum3").append("Humidity: " + forecastHum + "%");
+
+        // VARIABLES AND APPENDS FOR 4/5 DAY FORECAST
+        var forecastDate = JSON.stringify(response.list[3].dt_txt);
+        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var forecastTempK = response.list[3].main.temp;
+        var forecastTempC = (forecastTempK - 273.15)*1.80+32;
+        var forecastHum = response.list[3].main.humidity;
+
+        $("#forecast4").append(forecastDate);
+        $("#forecasttemp4").append("Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecasthum4").append("Humidity: " + forecastHum + "%");
+
+        // VARIABLES AND APPENDS FOR 5/5 DAY FORECAST
+        var forecastDate = JSON.stringify(response.list[4].dt_txt);
+        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var forecastTempK = response.list[4].main.temp;
+        var forecastTempC = (forecastTempK - 273.15)*1.80+32;
+        var forecastHum = response.list[4].main.humidity;
+
+        $("#forecast5").append(forecastDate);
+        $("#forecasttemp5").append("Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecasthum5").append("Humidity: " + forecastHum + "%");
 
     })
 
