@@ -37,6 +37,7 @@ h2 {
     padding-left: 5px;
     color: white;
     line-height: 2;
+    box-shadow: 2px 2px 2px black;
 }
 
 .forecast-date {
