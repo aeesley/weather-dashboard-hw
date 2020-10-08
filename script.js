@@ -31,6 +31,27 @@ function searchWeather(name) {
         $("#humidity").append("Humidity: " + humidity + " %");
         $("#wind-speed").append("Wind Speed: " + windSpeed + " MPH");
 
+        // UV INDEX PULL PART
+        // Referenced this project to troubleshoot UV index pulling issues: https://github.com/cmelby/WeatherDashboard
+
+        lat = response.coord.lat;
+        lon = response.coord.lon;
+        console.log(lat);
+
+        var queryURLUVIndex = "https://api.openweathermap.org/data/2.5/uvi?&appid=e79e860f1526eb9cc2572046fff7a30c&lat=" + lat  + "&lon=" + lon;
+
+
+            $.ajax({
+                url:queryURLUVIndex,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                $("#uv-index").empty();
+                var uvresults = response.value;
+
+                $("#uv-index").append("UV Index: " + uvresults);
+            });
+
     });
     // START OF THE SECOND QUERY URL USED FOR THE 5 DAY FORECAST
     var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q="+userInput+"&appid=" + APIKey;
@@ -43,18 +64,21 @@ function searchWeather(name) {
 
         // FIRST VARIABLES AND DATA APPENDING FOR 1/5 DAY FORECAST
         var forecastDate = JSON.stringify(response.list[1].dt_txt);
-        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
-        var forecastWeatherIcon = response.list[1].main.weather[0].icon;
-        console.log(forecastweatherIcon);
-        var forecastIconURL = "http://openweathermap.org/img/w/" + forecastWeatherIcon + ".png";
-        forecasticonEl = $("<img>").attr("src", forecastIconURL);
+
+        // FORECAST ICON WORK
+        // var forecastWeatherIcon = response.list[1].main.weather[0].icon;
+        // console.log(forecastweatherIcon);
+        // var forecastIconURL = "http://openweathermap.org/img/w/" + forecastWeatherIcon + ".png";
+        // forecasticonEl = $("<img>").attr("src", forecastIconURL);
+
         var forecastTempK = response.list[1].main.temp;
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         // var forecastTemp = response.list[0].main.temp;
         var forecastHum = response.list[1].main.humidity;
 
         $("#forecast1").append(forecastDate);
-        $("forecasticon1").append(iconEl);
+        // FORECAST ICON PART
+        // $("forecasticon1").append(iconEl);
         $("#forecasttemp1").append("Temp: " + forecastTempC.toFixed(2) + " °F");
         $("#forecasthum1").append("Humidity: " + forecastHum + "%");
 
