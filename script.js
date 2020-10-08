@@ -44,12 +44,17 @@ function searchWeather(name) {
         // FIRST VARIABLES AND DATA APPENDING FOR 1/5 DAY FORECAST
         var forecastDate = JSON.stringify(response.list[1].dt_txt);
         // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var weatherIcon = response.list[1].main.weather[0].icon;
+        console.log(weatherIcon);
+        var iconURL = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+        iconEl = $("<img>").attr("src", iconURL);
         var forecastTempK = response.list[1].main.temp;
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         // var forecastTemp = response.list[0].main.temp;
         var forecastHum = response.list[1].main.humidity;
 
         $("#forecast1").append(forecastDate);
+        $("forecasticon1").append(iconEl);
         $("#forecasttemp1").append("Temp: " + forecastTempC.toFixed(2) + " °F");
         $("#forecasthum1").append("Humidity: " + forecastHum + "%");
 
