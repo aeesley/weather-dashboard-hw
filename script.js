@@ -1,3 +1,5 @@
+console.log(moment)
+
 function searchWeather(name) {
 
     // VARIABLES TO USE FOR BOTH QUERY URLS
@@ -11,6 +13,16 @@ function searchWeather(name) {
         method: "GET"
     }).then(function(response) {
         console.log(response);
+        //Emptying all divs so when I do another search without refreshing data doesn't compound
+        $("#city-name").empty();
+        $("#temp").empty();
+        $("#humidity").empty();
+        $("#wind-speed").empty();
+        $("#uv-index").empty();
+        $(".forecast-date").empty();
+        $(".forecast-icon").empty();
+        $(".forecast-temp").empty();
+        $(".forecast-hum").empty();
 
         // VARIABLES TO CALL & POPULATE CURRENT WEATHER
         var cityName = $("<div>").text(response.name); // creating the variable for city name
@@ -63,13 +75,19 @@ function searchWeather(name) {
         console.log(response);
 
         // FIRST VARIABLES AND DATA APPENDING FOR 1/5 DAY FORECAST
-        var forecastDate = JSON.stringify(response.list[1].dt_txt);
+        var rawDate = JSON.stringify(response.list[1].dt_txt);
+        var splitForecastDate = rawDate.split(" ");
+        console.log(splitForecastDate);
+        var forecastDate = moment(splitForecastDate[0]).format("MM/DD/YYYY");
+        console.log(forecastDate);
+        // 8/15/2020
 
         // FORECAST ICON WORK
-        // var forecastWeatherIcon = response.list[1].main.weather[0].icon;
-        // console.log(forecastweatherIcon);
-        // var forecastIconURL = "http://openweathermap.org/img/w/" + forecastWeatherIcon + ".png";
-        // forecasticonEl = $("<img>").attr("src", forecastIconURL);
+        var forecastWeatherIcon = response.list[1].weather[0].icon;
+        console.log(forecastWeatherIcon);
+        var forecastIconURL = "http://openweathermap.org/img/w/" + forecastWeatherIcon + ".png";
+        console.log(forecastIconURL);
+        forecastIconEl = $("<img>").attr("src", forecastIconURL);
 
         var forecastTempK = response.list[1].main.temp;
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
@@ -78,13 +96,13 @@ function searchWeather(name) {
 
         $("#forecast1").append(forecastDate);
         // FORECAST ICON PART
-        // $("forecasticon1").append(iconEl);
+        $("#forecasticon1").append(forecastIconEl);
         $("#forecasttemp1").append("Temp: " + forecastTempC.toFixed(2) + " °F");
         $("#forecasthum1").append("Humidity: " + forecastHum + "%");
 
         // VARIABLES AND APPENDS FOR 2/5 DAY FORECAST
         var forecastDate = JSON.stringify(response.list[2].dt_txt);
-        // var forecastIcon = JSON.stringify(response.list[0].dt_txt);
+        var forecastIcon = JSON.stringify(response.list[0].dt_txt);
         var forecastTempK = response.list[2].main.temp;
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[2].main.humidity;
@@ -132,6 +150,7 @@ function searchWeather(name) {
 // ON CLICK FUNCTION THAT MAKES THE CURRENT WEATHER POPULATE
 $("#select-city").on("click", function(event) { // creating the on click event to take in the user input city value
     event.preventDefault();
+
     var inputCity = $("#city-input").val().trim();
 
     searchWeather(inputCity);
