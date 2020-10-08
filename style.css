@@ -1,5 +1,5 @@
 .toptitle {
-    background-color: grey;
+    background-color: slategray;
     color: white;
     text-align: center;
     padding-top: 10px;
@@ -23,14 +23,20 @@ h2 {
     font-weight: bold;
 }
 
-.jumbotron {
+.results-boxes {
     margin: 15px;
+    padding: 10px;
 }
 
 .forecast {
     background-color:dodgerblue;
     margin: 5px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
     color: white;
+    line-height: 2;
 }
 
 .forecast-date {
