@@ -57,9 +57,33 @@ function searchWeather(name) {
             }).then(function (response) {
                 console.log(response);
                 var uvresults = response.value;
+                console.log(uvresults);
 
-                $("#city-name").append("<p>" + "UV Index: " + uvresults);
+                $("#uv-index-results").append("<p>" + "UV Index: " + uvresults);
+
+                // TRYING TO SWITCH BACKGROUND COLOR BASED ON UV VALUE
+                function uvBackground(uvColor) {
+    
+                    switch (
+                        uvColor
+                    ) {
+                        case (1 < uvresults < 2):
+                            $("#uv-index-results").css("background-color", "green");
+                        case (3 < uvresults < 5):
+                            $("#uv-index-results").attr("background-color", "yellow");
+                        case (6 < uvresults < 7):
+                            $("#uv-index-results").css("background-color", "orange");
+                        case (8 < uvresults < 10):
+                            $("#uv-index-results").css("background-color", "red");
+                        case (10 < uvresults):
+                            $("#uv-index-results").css("background-color", "purple");
+                    }
+                }
+                uvBackground ();
             });
+
+
+
 
     });
     // START OF THE SECOND QUERY URL USED FOR THE 5 DAY FORECAST
