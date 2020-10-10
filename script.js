@@ -15,10 +15,11 @@ function searchWeather(name) {
         console.log(response);
         //Emptying all divs so when I do another search without refreshing data doesn't compound
         $("#city-name").empty();
-        $("#temp").empty();
-        $("#humidity").empty();
-        $("#wind-speed").empty();
-        $("#uv-index").empty();
+        // $("#temp").empty();
+        // $("#humidity").empty();
+        // $("#wind-speed").empty();
+        // $("#uv-index").empty();
+
         $(".forecast-date").empty();
         $(".forecast-icon").empty();
         $(".forecast-temp").empty();
@@ -39,9 +40,9 @@ function searchWeather(name) {
         $("#city-name").append(cityName); // appending the under inputted city name, and the corresponding main weather data value
         $(cityName).addClass("city-name-style");
         $(cityName).append(iconEl);
-        $("#temp").append("Temperature: " + tempC.toFixed(2) + " °F");
-        $("#humidity").append("Humidity: " + humidity + " %");
-        $("#wind-speed").append("Wind Speed: " + windSpeed + " MPH");
+        $("#city-name").append("<p>" + "Temperature: " + tempC.toFixed(2) + " °F");
+        $("#city-name").append("<p>" + "Humidity: " + humidity + " %");
+        $("#city-name").append("<p>" + "Wind Speed: " + windSpeed + " MPH");
 
         // UV INDEX PULL PART
         // Referenced this project to troubleshoot UV index pulling issues: https://github.com/cmelby/WeatherDashboard
@@ -58,10 +59,10 @@ function searchWeather(name) {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-                $("#uv-index").empty();
+                // $("#city-name").empty();
                 var uvresults = response.value;
 
-                $("#uv-index").append("UV Index: " + uvresults);
+                $("#city-name").append("<p>" + "UV Index: " + uvresults);
             });
 
     });
