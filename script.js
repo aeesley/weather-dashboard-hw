@@ -15,10 +15,12 @@ function searchWeather(name) {
         console.log(response);
         //Emptying all divs so when I do another search without refreshing data doesn't compound
         $("#city-name").empty();
-        $(".forecast-date").empty();
-        $(".forecast-icon").empty();
-        $(".forecast-temp").empty();
-        $(".forecast-hum").empty();
+        $("#uv-index-results").empty();
+        $(".forecast").empty();
+        // $(".forecast-date").empty();
+        // $(".forecast-icon").empty();
+        // $(".forecast-temp").empty();
+        // $(".forecast-hum").empty();
 
         // VARIABLES TO CALL & POPULATE CURRENT WEATHER
         var cityName = $("<div>").text(response.name); // creating the variable for city name
@@ -188,6 +190,11 @@ function searchWeather(name) {
         $("#forecast-day-5").append("<p>" + "Humidity: " + forecastHum + "%");
 
     })
+
+    localStorage.setItem("userAnswer", userInput);
+    var storedUserAnswer = localStorage.getItem("userAnswer");
+    $("#past-searches").append("<p>" + storedUserAnswer);
+
 
 }
 // ON CLICK FUNCTION THAT MAKES THE CURRENT WEATHER POPULATE
