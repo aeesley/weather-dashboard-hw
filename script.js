@@ -15,11 +15,6 @@ function searchWeather(name) {
         console.log(response);
         //Emptying all divs so when I do another search without refreshing data doesn't compound
         $("#city-name").empty();
-        // $("#temp").empty();
-        // $("#humidity").empty();
-        // $("#wind-speed").empty();
-        // $("#uv-index").empty();
-
         $(".forecast-date").empty();
         $(".forecast-icon").empty();
         $(".forecast-temp").empty();
@@ -34,6 +29,8 @@ function searchWeather(name) {
         var tempC = (tempK - 273.15)*1.80+32;
         var humidity = response.main.humidity;
         var windSpeed = response.wind.speed;
+
+
 
         // ADDING CURRENT WEATHER DATA TO WEATHER DASHBOARD HTML
         $("#city-name").empty(); // emptying div
@@ -59,7 +56,6 @@ function searchWeather(name) {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-                // $("#city-name").empty();
                 var uvresults = response.value;
 
                 $("#city-name").append("<p>" + "UV Index: " + uvresults);
@@ -90,10 +86,10 @@ function searchWeather(name) {
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[1].main.humidity;
 
-        $("#forecast1").append(forecastDate);
-        $("#forecasticon1").append(forecastIconEl);
-        $("#forecasttemp1").append("Temp: " + forecastTempC.toFixed(2) + " °F");
-        $("#forecasthum1").append("Humidity: " + forecastHum + "%");
+        $("#forecast-day-1").append(forecastDate);
+        $("#forecast-day-1").append(forecastIconEl);
+        $("#forecast-day-1").append("<p>" + "Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecast-day-1").append("<p>" + "Humidity: " + forecastHum + "%");
 
         // VARIABLES AND APPENDS FOR 2/5 DAY FORECAST
         var rawDate = JSON.stringify(response.list[2].dt_txt);
@@ -108,10 +104,10 @@ function searchWeather(name) {
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[2].main.humidity;
 
-        $("#forecast2").append(forecastDate);
-        $("#forecasticon2").append(forecastIconEl);
-        $("#forecasttemp2").append("Temp: " + forecastTempC.toFixed(2) + " °F");
-        $("#forecasthum2").append("Humidity: " + forecastHum + "%");
+        $("#forecast-day-2").append(forecastDate);
+        $("#forecast-day-2").append(forecastIconEl);
+        $("#forecast-day-2").append("<p>" + "Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecast-day-2").append("<p>" + "Humidity: " + forecastHum + "%");
 
         // VARIABLES AND APPENDS FOR 3/5 DAY FORECAST
         var rawDate = JSON.stringify(response.list[3].dt_txt);
@@ -126,10 +122,10 @@ function searchWeather(name) {
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[3].main.humidity;
 
-        $("#forecast3").append(forecastDate);
-        $("#forecasticon3").append(forecastIconEl);
-        $("#forecasttemp3").append("Temp: " + forecastTempC.toFixed(2) + " °F");
-        $("#forecasthum3").append("Humidity: " + forecastHum + "%");
+        $("#forecast-day-3").append(forecastDate);
+        $("#forecast-day-3").append(forecastIconEl);
+        $("#forecast-day-3").append("<p>" + "Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecast-day-3").append("<p>" + "Humidity: " + forecastHum + "%");
 
         // VARIABLES AND APPENDS FOR 4/5 DAY FORECAST
         var rawDate = JSON.stringify(response.list[4].dt_txt);
@@ -144,10 +140,10 @@ function searchWeather(name) {
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[4].main.humidity;
 
-        $("#forecast4").append(forecastDate);
-        $("#forecasticon4").append(forecastIconEl);
-        $("#forecasttemp4").append("Temp: " + forecastTempC.toFixed(2) + " °F");
-        $("#forecasthum4").append("Humidity: " + forecastHum + "%");
+        $("#forecast-day-4").append(forecastDate);
+        $("#forecast-day-4").append(forecastIconEl);
+        $("#forecast-day-4").append("<p>" + "Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecast-day-4").append("<p>" + "Humidity: " + forecastHum + "%");
 
         // VARIABLES AND APPENDS FOR 5/5 DAY FORECAST
         var rawDate = JSON.stringify(response.list[5].dt_txt);
@@ -162,10 +158,10 @@ function searchWeather(name) {
         var forecastTempC = (forecastTempK - 273.15)*1.80+32;
         var forecastHum = response.list[5].main.humidity;
 
-        $("#forecast5").append(forecastDate);
-        $("#forecasticon5").append(forecastIconEl);
-        $("#forecasttemp5").append("Temp: " + forecastTempC.toFixed(2) + " °F");
-        $("#forecasthum5").append("Humidity: " + forecastHum + "%");
+        $("#forecast-day-5").append(forecastDate);
+        $("#forecast-day-5").append(forecastIconEl);
+        $("#forecast-day-5").append("<p>" + "Temp: " + forecastTempC.toFixed(2) + " °F");
+        $("#forecast-day-5").append("<p>" + "Humidity: " + forecastHum + "%");
 
     })
 

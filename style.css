@@ -45,13 +45,22 @@ h2 {
     font-weight: bold;
 }
 
-.forecast-temp {
+.forecast-data {
+    font-size: 10px; 
+}
+
+.forecast-date {
+    font-size: 16px; 
+    font-weight: bold;
+}
+
+/* .forecast-temp {
     font-size: 10px;
 }
 
 .forecast-hum {
     font-size: 10px;
-}
+} */
 
 .city-name-style {
     font-size: 36px;
