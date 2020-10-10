@@ -17,10 +17,6 @@ function searchWeather(name) {
         $("#city-name").empty();
         $("#uv-index-results").empty();
         $(".forecast").empty();
-        // $(".forecast-date").empty();
-        // $(".forecast-icon").empty();
-        // $(".forecast-temp").empty();
-        // $(".forecast-hum").empty();
 
         // VARIABLES TO CALL & POPULATE CURRENT WEATHER
         var cityName = $("<div>").text(response.name); // creating the variable for city name
@@ -31,8 +27,6 @@ function searchWeather(name) {
         var tempC = (tempK - 273.15)*1.80+32;
         var humidity = response.main.humidity;
         var windSpeed = response.wind.speed;
-
-
 
         // ADDING CURRENT WEATHER DATA TO WEATHER DASHBOARD HTML
         $("#city-name").empty(); // emptying div
@@ -57,11 +51,14 @@ function searchWeather(name) {
                 url:queryURLUVIndex,
                 method: "GET"
             }).then(function (response) {
-                console.log(response);
-                var uvresults = response.value;
-                console.log(uvresults);
-
-                $("#uv-index-results").append("<p>" + "UV Index: " + uvresults);
+                // Creating variable for UV index and adding to current weather results area
+                // var uvresults = response.value;
+                // var uvresultsEl = $("#uv-index-results").append("<p>" + "UV Index: " + uvresults);
+                //     if(uvresults <= 2.99) {
+                //         uvresultsEl.addClass("lowestUV");
+                //     } else if (uvresults >= 3.0 && uvresults <= 4.99) {
+                //         uvresults.El.addClass("lowerUV");
+                //     }
 
                 // TRYING TO SWITCH BACKGROUND COLOR BASED ON UV VALUE
                 function uvBackground(uvColor) {
@@ -191,6 +188,7 @@ function searchWeather(name) {
 
     })
 
+    // Saving and appending past searches under the user input area
     localStorage.setItem("userAnswer", userInput);
     var storedUserAnswer = localStorage.getItem("userAnswer");
     $("#past-searches").append("<p>" + storedUserAnswer);

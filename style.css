@@ -16,6 +16,7 @@ h2 {
 
 .btn {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #label-text {
@@ -64,4 +65,12 @@ h2 {
 
 .city-name-style {
     font-size: 36px;
+}
+
+.lowestUV {
+    background-color: green;
+}
+
+.lowerUV {
+    background-color: yellow;
 }
